@@ -1,0 +1,13 @@
+<launch>
+<arg name="is_sim" default="false"/>
+
+<include unless="$(arg is_sim)" file="$(find azure_kinect_ros_driver)/launch/driver.launch" >
+    <arg name="sensor_sn" value='000059793712' />
+    <arg name="fps" value="30" />
+    <arg name="color_resolution" value="720P" />
+    <arg name="depth_mode" value="NFOV_UNBINNED" />
+</include>
+
+<node pkg="tf2_ros" type="static_transform_publisher" name="azure_static_tf" 
+    args="0.7135 0.0268 0.6352 0.70369 0.70261 -0.07489 -0.07450 base rgb_camera_link" />
+</launch>

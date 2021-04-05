@@ -1,0 +1,8 @@
+#goal definition
+geometry_msgs/Pose cloth_pose
+---
+#result definition
+float32 position
+sensor_msgs/Image rgb
+---
+#feedback

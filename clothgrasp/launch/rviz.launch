@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="is_sim" default="false"/>
+  <arg name="init_collisions" default="true"/>
+  <arg name="transform_gripper" default="true" />
+  <arg name="wsg" default="true" />
+
+  <rosparam param="sim" subst_value="True">$(arg is_sim)</rosparam>
+  <rosparam param="transform_gripper" subst_value="True">$(arg transform_gripper)</rosparam>
+
+  <node pkg="intera_interface" type="joint_trajectory_action_server.py" name="joint_trajectory_action_server" />
+  <node if="$(arg init_collisions)" pkg="clothgrasp" type="init_collision_geometries.py" name="init_collision_geometries" />
+
+  <!-- Sim -->
+  <node if="$(arg is_sim)" pkg="clothgrasp" type="init_arm_position.py" name="init_arm_position" />
+  <include if="$(arg is_sim)" file="$(find sawyer_moveit_config)/launch/sawyer_moveit.launch">
+    <arg name="rviz_config" value="$(find clothgrasp)/config/moveit.rviz" />
+    <arg name="electric_gripper" value="true" />
+  </include>
+
+  <!-- No sim -->
+  <include if="$(eval arg('is_sim') == 0)" file="$(find sawyer_wsg_moveit)/launch/sawyer_wsg.launch">
+    <arg name="rviz_config" value="$(find clothgrasp)/config/moveit.rviz" />
+  </include>
+  <param if="$(eval arg('is_sim') == 0)" name="robot_description" 
+      command="xacro --inorder $(find sawyer_wsg_moveit)/urdf_backup/sawyer.urdf.xacro 
+      gazebo:=false electric_gripper:=false
+      pedestal:=true static:=true wsg:=true"/>
+  <param if="$(eval arg('is_sim') == 0)" name="robot_description_semantic" textfile="$(find sawyer_wsg_moveit)/config/sawyer.srdf" />
+</launch>

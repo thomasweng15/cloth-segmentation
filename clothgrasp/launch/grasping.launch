@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="is_sim" default="false"/>
+  <rosparam command="load" file="$(find clothgrasp)/config/config.yaml" />
+
+  <node pkg="clothgrasp" type="detectedge_service.py" name="detectedge_service" output="screen" />
+  <node pkg="clothgrasp" type="selectgrasp_service.py" name="selectgrasp_service" output="screen" />
+  <node pkg="clothgrasp" type="projectgrasp_service.py" name="projectgrasp_service" output="screen" />
+  <node pkg="clothgrasp" type="grasp_actionserver.py" name="grasp_actionserver" output="screen" />
+
+  <include if="$(eval arg('is_sim') == 0)" file="$(find wsg_50_driver)/launch/wsg_50_tcp.launch">
+    <arg name="force" value="40" />
+  </include>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="gripper_tip_static_tf" 
+      args="0 0 0.16 0 0 0 1 right_hand right_gripper_tip" />
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="wsg_tf" 
+      args="0 0 0.01 0 0 0 right_hand wsg32_base_link" />
+</launch>

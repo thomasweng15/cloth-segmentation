@@ -1,0 +1,11 @@
+# request
+sensor_msgs/Image depth_im
+int64 py
+int64 px
+float64 angle 
+---
+# response
+# moveit_msgs/RobotTrajectory[] plans
+# bool is_default_angle
+geometry_msgs/Pose cloth_pose
+

@@ -1,0 +1,40 @@
+# Break on error if not debugging
+break_on_error: true
+
+# target to grasp [corners, edges]
+grasp_target: edges
+
+# Base path for saving runs [debug, experiment, rl]
+base_save_path: /path/to/dir
+
+# Cloth detection method [groundtruth, network, clothseg, canny, canny_color, harris, harris_color]
+detection_method: groundtruth
+# detection_method: network
+# Grasp point selection method [random, manual, confidence, policy]
+grasp_point_method: random
+# grasp_point_method: confidence
+# Grasp angle selection method [predict, inneredge, center]
+grasp_angle_method: inneredge
+# grasp_angle_method: inneredge
+
+# Cropping [row start, row end, col start, col end, step]
+crop_dims: [150, 660, 415, 900, 2]
+crop_dims_baselines: [180, 650, 450, 900, 2]
+
+# Camera intrinsics
+D: [0.6862431764602661, -2.8917713165283203, 0.0004992862232029438, -4.462565993890166e-05, 1.6113708019256592, 0.5638872385025024, -2.7169768810272217, 1.540696382522583]
+K: [611.1693115234375, 0.0, 638.8131713867188, 0.0, 611.1657104492188, 367.74871826171875, 0.0, 0.0, 1.0]
+
+# Camera extrinsics
+w2c_pose: [0.7135, 0.0268, 0.6352, 0.70369, 0.70261, -0.07489, -0.07450]
+
+# Joint poses
+init_joint_angles: [0.44933203125, -0.7590625, -1.4783701171875, 1.6230908203125, 0.3061767578125, 1.6142314453125, -2.5043740234375]
+pregrasp_joint_angles: [0.338177734375, -0.7677197265625, -1.007546875, 1.676275390625, 0.6960361328125, 1.109271484375, -2.3825595703125]
+
+# Cloth detection model
+model_path: /path/to/weights
+
+# Cloth table segmentation for clothseg baseline only
+segment_table: False
+table_plane: [-0.001652, 0.414111, 0.910225, -0.605588]

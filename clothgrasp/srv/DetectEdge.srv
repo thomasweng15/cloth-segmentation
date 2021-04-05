@@ -1,0 +1,9 @@
+# request
+---
+# response
+sensor_msgs/Image rgb_im
+sensor_msgs/Image depth_im
+sensor_msgs/Image prediction
+sensor_msgs/Image corners
+sensor_msgs/Image outer_edges
+sensor_msgs/Image inner_edges
