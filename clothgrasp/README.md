@@ -1,4 +1,4 @@
-# Cloth Region Segmentation for Robust Grasp Selection ROS code
+# Cloth Segmentation ROS Code 
 
 ROS code for running the segmentation model from [cloth_region_seg_training](https://github.com/thomasweng15/cloth-region-seg-training) on a robot.
 
