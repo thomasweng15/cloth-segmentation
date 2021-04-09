@@ -1,0 +1,15 @@
+{
+    "n_feature": 3,
+    "n_class": 3,
+    "transform": true,
+    "lr": 1e-3,
+    "momentum": 0,
+    "w_decay": 0,
+    "step_size": 30,
+    "gamma": 0.5,
+    "datasize": "",
+    "runspath": "/media/ExtraDrive2/jianingq/train_runs",
+    "datapath": "/home/jianingq/data_studio_painted_towel_r0.1/camera_3/",
+    "batch_size": 8,
+    "epochs": 250
+}

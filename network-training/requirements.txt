@@ -1,0 +1,9 @@
+numpy==1.15.4
+opencv-python==3.4.4.19
+torch
+torchvision
+sklearn
+matplotlib
+pillow
+tensorboardX
+tqdm
