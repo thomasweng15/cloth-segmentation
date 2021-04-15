@@ -4,4 +4,4 @@
 * `network-training` contains code for training the segmentation network.
 * `clothgrasp` contains ROS code for executing grasps with the trained network.
 
-See the README in each direction for installation and execution instructions. 
+See the README in each directory for installation and execution instructions. 
